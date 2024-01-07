@@ -56,15 +56,14 @@ elif ch=='Update':
         task_due_date=selected_result[0][2]
         #layout
         col1,col2 = st.columns(2)    
-        with col1:
-            new_task = st.text_area("Task To Do",task)                    
+               with col1:
+            new_task = st.text_area("Task to do",task)
         with col2:
-            new_task_status = st.selectbox("status",["ToDO","Doing","Done"])
-            new_task_due_date = st.date_input("Due Date")
-        if st.button("Update a task"):
-            edit_task_data(new_task,new_task_status,new_task_due_date,task,
-                           task_status,task_due_date)
-            st.success(f"Task updation successfully : {task}")
+            new_task_status = st.selectbox(task_status, ['ToDo', 'Doing', 'Done'])
+            new_task_due_date = st.date_input("Task Due Date",task_due_date)
+        if st.button("Update"):
+            edit_task_data(new_task,new_task_status,new_task_due_date,task,task_status,task_due_date)
+            st.success("Successfully update a record {}" .format(new_task))
         result2=view_all_data()
         #st.write(result)
         df1=pd.DataFrame(result2,columns=['Task','Status','Due Date'])
